@@ -26,22 +26,19 @@ This cookbook tests to see if mongodb is installed, configured and ready to use
 mongodb-org
 ```
 
-#### To run test
+To use to test on aws ec2 driver use kitchen_cloud.yml then kitchen test
+
+#### Unit test
 
 to run unit tests
+
 ```
 chef exec rspec
 ```
 
-To run integration test
+Unit test is a level of testing of each individual components of the software.
 
-```
-kitchen test
-```
-
-To use to test on aws ec2 driver use kitchen_cloud.yml then kitchen test
-
-#### Unit test
+These are what the unit tests look for
 
 ```
 should add mongo to the sources list
@@ -53,6 +50,16 @@ should start the mongod service
 ```
 
 #### Integration Test
+
+To run integration test
+
+```
+kitchen test
+```
+
+Integration test is the level of testing where certain components are combined with others and tested together and these are some of the intgration test for this cookbook
+
+
 ```
 describe package 'mongodb-org' do
   it { should be_installed }
@@ -69,3 +76,5 @@ describe port(27017) do
   its('addresses') { should include '0.0.0.0' }
 end
 ```
+
+To use to test on aws ec2 driver use kitchen_cloud.yml then kitchen test
